@@ -14,7 +14,7 @@ public class FinancialButtonListener implements ActionListener {
     {
         MyFinancialFrame myProp = new MyFinancialFrame();
 	myProp.setTitle("Financial Overview");
-	myProp.setSize(620,880);
+	myProp.setSize(620,700);
 	myProp.setVisible(true);
 
     }

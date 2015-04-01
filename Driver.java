@@ -5,8 +5,5 @@ public class Driver
     {
      
         MyDialog LoginScreen = new MyDialog();
-        LoginScreen.setBounds(500,300,215,225);
-        LoginScreen.setTitle("ACCOUNT LOGIN");
-        LoginScreen.setVisible(true);
     }
 } 

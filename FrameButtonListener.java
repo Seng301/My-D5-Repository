@@ -21,7 +21,7 @@ public class FrameButtonListener implements ActionListener {
     {
         ToDoFrame todo = new ToDoFrame();
 	todo.setTitle("ToDo's");
-	todo.setSize(620,880);
+	todo.setSize(620,700);
 	todo.setVisible(true);
 
     }

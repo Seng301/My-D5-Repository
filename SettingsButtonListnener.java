@@ -15,7 +15,7 @@ public class SettingsButtonListnener implements ActionListener {
         
         SettingsFrame todo = new SettingsFrame();
 	todo.setTitle("Settings");
-	todo.setSize(620,880);
+	todo.setSize(620,700);
 	todo.setVisible(true);
         
 

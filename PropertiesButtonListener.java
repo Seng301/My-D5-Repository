@@ -15,7 +15,7 @@ public class PropertiesButtonListener implements ActionListener {
         
         MyPropertiesFrame myProp = new MyPropertiesFrame();
 	myProp.setTitle("My Properties");
-	myProp.setSize(620,880);
+	myProp.setSize(620,700);
 	myProp.setVisible(true);
 
     }

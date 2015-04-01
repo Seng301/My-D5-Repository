@@ -74,7 +74,7 @@ public class MyPropertiesFrame extends JFrame implements ActionListener
 	New.setBounds(450,100,50,50);
         
         home = new JButton("HOME");
-	home.setBounds(260,700,100,50);
+	home.setBounds(260,600,100,50);
         home.addActionListener(this);
        
     }
@@ -82,7 +82,7 @@ public class MyPropertiesFrame extends JFrame implements ActionListener
     public void actionPerformed (ActionEvent e)
     {
         MainFrame aFrame = new MainFrame ();
-        aFrame.setSize(620,1000);
+        aFrame.setSize(620,700);
         aFrame.setVisible(true);
         this.dispose();  
     }
