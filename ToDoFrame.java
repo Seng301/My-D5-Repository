@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JTextField;
 
 
 //main frame in program holds buttons and labels and text areas
@@ -19,13 +20,14 @@ public class ToDoFrame extends JFrame implements ActionListener
     private JLabel Title;
     private JButton home;
     private JLabel aLabel;
-    
+    private JLabel TODOA;
    
     
     
     //used to set up the frame
     public ToDoFrame()
     {
+    
 	initializeControls();
 	initializeFrame();
     }
@@ -37,18 +39,23 @@ public class ToDoFrame extends JFrame implements ActionListener
 	add(Title);
         add(home);
         add(aLabel);
+        add(TODOA);
     }
 
    
-
     //used to initialize the frame and create the basics of it
     public void initializeFrame()
-    {
+    {   
         
+
         ImageIcon LPM = new ImageIcon("LPM.gif");
         
         aLabel = new JLabel(LPM);
 	aLabel.setBounds(0,0,75,58);
+        
+
+        TODOA = new JLabel("A");   //pass in the string that we read
+	TODOA.setBounds(260,300,100,50);
         
         Title = new JLabel("ToDo's");
         Title.setBounds(200, 65, 200,40);
@@ -66,7 +73,8 @@ public class ToDoFrame extends JFrame implements ActionListener
     //buttons that are used in the program
     public void initializeControls()
     {
- 
+        
+        
         New = new MyButton("+",null,this);
 	New.setBounds(450,100,50,50);
         New.addActionListener(new AddButtonListener());
@@ -74,11 +82,8 @@ public class ToDoFrame extends JFrame implements ActionListener
         home = new JButton("HOME");
 	home.setBounds(260,600,100,50);
         home.addActionListener(this);
-        
-	
-        ;
     }
-    
+   
     public void actionPerformed (ActionEvent e)
     {
         MainFrame aFrame = new MainFrame ();
@@ -86,4 +91,5 @@ public class ToDoFrame extends JFrame implements ActionListener
         aFrame.setVisible(true);
         this.dispose();  
     }
+    
 }

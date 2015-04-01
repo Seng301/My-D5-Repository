@@ -1,18 +1,23 @@
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-
+ 
 //main frame in program holds buttons and labels and text areas
 //that are required for the program
 public class MyFinancialFrame extends JFrame  implements ActionListener
 {
+    
     private JLabel aLabel;
     private JButton home;
     private JLabel Title;
@@ -73,6 +78,6 @@ public class MyFinancialFrame extends JFrame  implements ActionListener
     }
     
 
-    
+
 
 }
