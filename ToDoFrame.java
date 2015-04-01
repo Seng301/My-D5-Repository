@@ -1,22 +1,25 @@
 
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
-import javax.swing.JTextArea;
-import javax.swing.JScrollPane;
-import javax.swing.JTextField;
-import javax.swing.border.Border;
-import javax.swing.border.LineBorder;
+import javax.swing.JButton;
+
 
 //main frame in program holds buttons and labels and text areas
 //that are required for the program
-public class ToDoFrame extends JFrame
+public class ToDoFrame extends JFrame implements ActionListener
 {
     public static final int WIDTH = 400;
     public static final int HEIGHT = 800;
     private MyButton New;
-    //private JLabel aLabel;
+    private JLabel Title;
+    private JButton home;
+    private JLabel aLabel;
+    
    
     
     
@@ -31,29 +34,28 @@ public class ToDoFrame extends JFrame
     public void addControls()
     {
 	add(New);
-	//add(aLabel);
-        //add(text);
-        //add(name);
-        //add(text2);
-        //add(scrollPane);
-        //add(adress);
+	add(Title);
+        add(home);
+        add(aLabel);
     }
 
-    //get*() methods used to allow return and update of other controlls   
-   // public JTextField getText()
-   // {
-   //     return(text);
-    //}
-   // public JTextArea getText2()
-    //{
-    //    return(text2);
-    //}
+   
 
     //used to initialize the frame and create the basics of it
     public void initializeFrame()
     {
+        
+        ImageIcon LPM = new ImageIcon("LPM.gif");
+        
+        aLabel = new JLabel(LPM);
+	aLabel.setBounds(0,0,75,58);
+        
+        Title = new JLabel("ToDo's");
+        Title.setBounds(200, 65, 200,40);
+        Title.setFont(new Font("Serif", Font.BOLD, 30));
+        
 	setSize(WIDTH,HEIGHT);
-        setTitle("Landlord Property Management");
+        setTitle("ToDo's");
         getContentPane().setBackground(Color.white);
 	setLayout(null);
 	addControls();
@@ -65,12 +67,23 @@ public class ToDoFrame extends JFrame
     public void initializeControls()
     {
  
-        
-	New = new MyButton("Add a ToDo",null,this);
-	New.setBounds(550,300,100,100);
+        New = new MyButton("+",null,this);
+	New.setBounds(450,100,50,50);
         New.addActionListener(new FrameButtonListener());
+                
+        home = new JButton("HOME");
+	home.setBounds(260,700,100,50);
+        home.addActionListener(this);
         
-
-
+	
+        ;
+    }
+    
+    public void actionPerformed (ActionEvent e)
+    {
+        MainFrame aFrame = new MainFrame ();
+        aFrame.setSize(620,1000);
+        aFrame.setVisible(true);
+        this.dispose();  
     }
 }

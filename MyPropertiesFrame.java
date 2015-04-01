@@ -1,20 +1,24 @@
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 
 //main frame in program holds buttons and labels and text areas
 //that are required for the program
-public class MyPropertiesFrame extends JFrame
+public class MyPropertiesFrame extends JFrame implements ActionListener
 {
     public static final int WIDTH = 400;
     public static final int HEIGHT = 800;
     private MyButton New;
     private JLabel aLabel;
     private JLabel Title;
+    private JButton home;
 
     //private JLabel aLabel;
    
@@ -33,6 +37,7 @@ public class MyPropertiesFrame extends JFrame
 	add(New);
         add(aLabel);
         add(Title);
+        add(home);
 
     }
 
@@ -67,9 +72,18 @@ public class MyPropertiesFrame extends JFrame
         
 	New = new MyButton("+",null,this);
 	New.setBounds(450,100,50,50);
-        //New.addActionListener(new FrameButtonListener());
         
-
-
+        home = new JButton("HOME");
+	home.setBounds(260,700,100,50);
+        home.addActionListener(this);
+       
+    }
+    
+    public void actionPerformed (ActionEvent e)
+    {
+        MainFrame aFrame = new MainFrame ();
+        aFrame.setSize(620,1000);
+        aFrame.setVisible(true);
+        this.dispose();  
     }
 }

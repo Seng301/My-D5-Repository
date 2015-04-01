@@ -148,7 +148,7 @@ public class MyDialog extends JDialog implements ActionListener
 	cleanUp(success,1000);
         cleanUp(this, 10);
         MainFrame aFrame = new MainFrame ();
-        aFrame.setSize(620,1000);
+        aFrame.setSize(680,880);
         aFrame.setVisible(true);
     }
 

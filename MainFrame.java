@@ -16,9 +16,9 @@ import javax.swing.JLabel;
 //that are required for the program
 public class MainFrame extends JFrame implements ActionListener
 {
-    private MyButton myProperties;
-    private MyButton ToDos;
-    private MyButton Financial;
+    private JButton myProperties;
+    private JButton ToDos;
+    private JButton Financial;
     //private MyButton Settings;
     private JButton Settings;
     private JLabel aLabel;
@@ -55,6 +55,7 @@ public class MainFrame extends JFrame implements ActionListener
 	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
+    
     //used to create the controlls on the frame includiong labels texts and 
     //buttons that are used in the program
     public void initializeControls()
@@ -64,22 +65,24 @@ public class MainFrame extends JFrame implements ActionListener
         aLabel = new JLabel(LPM);
 	aLabel.setBounds(0,0,75,58);
         
-	myProperties = new MyButton("My Properties",null,this);
+        
+	myProperties = new JButton("My Properties");
 	myProperties.setBounds(150,100,300,50);
+        myProperties.addActionListener(this);
         myProperties.addActionListener(new PropertiesButtonListener());
 
         
-	ToDos = new MyButton("To-Do's",null,this);
+	ToDos = new JButton("To-Do's");
 	ToDos.setBounds(150,200,300,50);
+        ToDos.addActionListener(this);
         ToDos.addActionListener(new ToDoButtonListener());
         
-        Financial = new MyButton("Financial Overview",null, this);
+        Financial = new JButton("Financial Overview");
 	Financial.setBounds(150,300,300,50);
+        Financial.addActionListener(this);
         Financial.addActionListener(new FinancialButtonListener());
         
-        //Settings = new MyButton("Settings",null, this);
-	//Settings.setBounds(150,400,300,50);
-        //Settings.addActionListener(new SettingsButtonListnener());
+
         
         Settings = new JButton("Settings");
         Settings.addActionListener(this);
@@ -91,16 +94,5 @@ public class MainFrame extends JFrame implements ActionListener
     {
         this.dispose();
     }
-    public void cleanUp(JDialog popup, int delay)
-    {
-	try {
-	    Thread.sleep(delay); 
-	}
-	catch (InterruptedException ex)  { 
-	    System.out.println("Not Responding");
-	}
-	popup.setVisible(false);
-	popup.dispose();
-     
-    }
+   
 }
