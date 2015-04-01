@@ -30,6 +30,7 @@ public class MyDialog extends JDialog implements ActionListener
     private static String temp = "";
     private static String password = "";
 
+
     public MyDialog()
     {
         //read and decrypt the password

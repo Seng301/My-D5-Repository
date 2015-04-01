@@ -7,12 +7,12 @@ import javax.swing.JLabel;
 
 //main frame in program holds buttons and labels and text areas
 //that are required for the program
-public class MyFinancialFrame extends JFrame
+public class SettingsFrame extends JFrame
 {
     private JLabel aLabel;
     
     //used to set up the frame
-    public MyFinancialFrame()
+    public SettingsFrame()
     {
 	initializeFrame();
     }
@@ -20,8 +20,8 @@ public class MyFinancialFrame extends JFrame
     //adds the parts of the frame
     public void addControls()
     {
-	
-        add(aLabel);
+	add(aLabel);
+
     }
 
     
@@ -32,13 +32,7 @@ public class MyFinancialFrame extends JFrame
         
         aLabel = new JLabel(LPM);
 	aLabel.setBounds(0,0,75,58);
-        
-	setSize(WIDTH,HEIGHT);
-        setTitle("My Properties");
-        getContentPane().setBackground(Color.white);
-	setLayout(null);
-	addControls();
-	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
     }
 
     //used to create the controlls on the frame includiong labels texts and 

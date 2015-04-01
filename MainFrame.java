@@ -1,20 +1,27 @@
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+
+
+
 
 
 //main frame in program holds buttons and labels and text areas
 //that are required for the program
-public class MainFrame extends JFrame
+public class MainFrame extends JFrame implements ActionListener
 {
-    public static final int WIDTH = 400;
-    public static final int HEIGHT = 800;
     private MyButton myProperties;
     private MyButton ToDos;
     private MyButton Financial;
-    private MyButton Settings;
-    //private JLabel aLabel;
-   
+    //private MyButton Settings;
+    private JButton Settings;
+    private JLabel aLabel;
     
     
     //used to set up the frame
@@ -31,6 +38,7 @@ public class MainFrame extends JFrame
 	add(ToDos);
         add(Financial);
         add(Settings);
+        add(aLabel);
 
     }
 
@@ -50,12 +58,16 @@ public class MainFrame extends JFrame
     //used to create the controlls on the frame includiong labels texts and 
     //buttons that are used in the program
     public void initializeControls()
-    {
- 
+    {  
+        ImageIcon LPM = new ImageIcon("LPM.gif");
+        
+        aLabel = new JLabel(LPM);
+	aLabel.setBounds(0,0,75,58);
         
 	myProperties = new MyButton("My Properties",null,this);
 	myProperties.setBounds(150,100,300,50);
         myProperties.addActionListener(new PropertiesButtonListener());
+
         
 	ToDos = new MyButton("To-Do's",null,this);
 	ToDos.setBounds(150,200,300,50);
@@ -65,9 +77,30 @@ public class MainFrame extends JFrame
 	Financial.setBounds(150,300,300,50);
         Financial.addActionListener(new FinancialButtonListener());
         
-        Settings = new MyButton("Financial Overview",null, this);
-	Settings.setBounds(150,400,300,50);
-        Settings.addActionListener(new LabelButtonListener());
+        //Settings = new MyButton("Settings",null, this);
+	//Settings.setBounds(150,400,300,50);
+        //Settings.addActionListener(new SettingsButtonListnener());
+        
+        Settings = new JButton("Settings");
+        Settings.addActionListener(this);
+        Settings.setBounds(150,400,300,50);
+        Settings.addActionListener(new SettingsButtonListnener());
 
+    }
+        public void actionPerformed (ActionEvent e)
+    {
+        this.dispose();
+    }
+    public void cleanUp(JDialog popup, int delay)
+    {
+	try {
+	    Thread.sleep(delay); 
+	}
+	catch (InterruptedException ex)  { 
+	    System.out.println("Not Responding");
+	}
+	popup.setVisible(false);
+	popup.dispose();
+     
     }
 }
