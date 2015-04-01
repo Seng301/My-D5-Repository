@@ -69,7 +69,7 @@ public class ToDoFrame extends JFrame implements ActionListener
  
         New = new MyButton("+",null,this);
 	New.setBounds(450,100,50,50);
-        New.addActionListener(new FrameButtonListener());
+        New.addActionListener(new AddButtonListener());
                 
         home = new JButton("HOME");
 	home.setBounds(260,600,100,50);

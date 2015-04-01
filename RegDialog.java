@@ -4,7 +4,7 @@ import javax.swing.JDialog;
 import java.awt.TextField;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import java.util.Scanner;
+
 import java.io.*;
 
 public class RegDialog extends JDialog
