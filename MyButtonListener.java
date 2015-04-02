@@ -69,6 +69,7 @@ public class MyButtonListener implements ActionListener
                     System.out.println("Program interrupted");
                 }
                 aDialog.setVisible(false);
+                
                 System.exit(0);
             }
         }

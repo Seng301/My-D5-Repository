@@ -83,6 +83,7 @@ public class MyDialog extends JDialog
 			if(username != null || username == "")
 			{
 				userValid = username.equals(aUsername);
+                                
 			}
 			
 			System.out.println(username);
@@ -136,12 +137,13 @@ public class MyDialog extends JDialog
           returns true. */
 		public boolean verifyPassword(char[] aPassword)
 		{
-			boolean passwordValid = true;
+	boolean passwordValid = true;
             
-			if(aPassword.length > password_length || aPassword.length < password_length)
+	if(aPassword.length > password_length || aPassword.length < password_length)
             {
                 passwordValid = false;
             }
+                        
 			else if(password == null || password == "")
 			{
 				passwordValid = false;
@@ -191,5 +193,5 @@ public class MyDialog extends JDialog
         public void openRegistration()
         {
 			RegDialog reg = new RegDialog();
-		}
+	}
 }

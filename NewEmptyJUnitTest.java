@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 
+import java.awt.Color;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -215,8 +218,112 @@ public class NewEmptyJUnitTest {
          boolean input = test.CompleteRegistration();
          boolean expected = true; 
          Assert.assertEquals(input, expected);
+     }    
+     
+     @Test
+     public void FinancialFrameCloses() {
+         MyFinancialFrame test = new MyFinancialFrame();
+         test.actionPerformed(null);
+         boolean input = test.isVisible();
+         boolean expected = false; 
+         Assert.assertEquals(input, expected);
+                
+     }    
+     
+     @Test
+     public void MainFrameCloses() {
+         MainFrame test = new MainFrame();
+         test.actionPerformed(null);
+         boolean input = test.isVisible();
+         boolean expected = false; 
+         Assert.assertEquals(input, expected);         
+     }
+     
+     @Test
+     public void MyPropertiesFrameCloses() {
+         MyPropertiesFrame test = new MyPropertiesFrame();
+         test.actionPerformed(null);
+         boolean input = test.isVisible();
+         boolean expected = false; 
+         Assert.assertEquals(input, expected);         
+     }
+     
+     @Test
+     public void SettingsFrameCloses() {
+         SettingsFrame test = new SettingsFrame();
+         test.actionPerformed(null);
+         boolean input = test.isVisible();
+         boolean expected = false; 
+         Assert.assertEquals(input, expected);         
+     }
+     
+     @Test
+     public void ToDoFrameCloses() {
+         ToDoFrame test = new ToDoFrame();
+         test.actionPerformed(null);
+         boolean input = test.isVisible();
+         boolean expected = false; 
+         Assert.assertEquals(input, expected);         
+     }
+      @Test
+     public void AddPropDialogCloses() {
+         AddPropertyDialog test = new AddPropertyDialog();
+         test.actionPerformed(null);
+         boolean input = test.isVisible();
+         boolean expected = false; 
+         Assert.assertEquals(input, expected);         
+     }
+      @Test
+     public void AddTODODialogCloses() {
+         AddTodoDialog test = new AddTodoDialog();
+         test.actionPerformed(null);
+         boolean input = test.isVisible();
+         boolean expected = false; 
+         Assert.assertEquals(input, expected);         
      }
      
      
+     @Test
+     public void LoginUsernameisNull() {
+         MyDialog test = new MyDialog();
+         boolean input = test.verifyUsername(null);
+         boolean expected = false; 
+         Assert.assertEquals(input, expected);         
+     }
      
+     @Test
+     public void LoginUsernameisEmpty() {
+         MyDialog test = new MyDialog();
+         boolean input = test.verifyUsername("");
+         boolean expected = false; 
+         Assert.assertEquals(input, expected);         
+     }
+     
+     @Test
+     public void LoginUsernameisdifferent() {
+         MyDialog test = new MyDialog();
+         boolean input = test.verifyUsername("019><:{P:");
+         boolean expected = false; 
+         Assert.assertEquals(input, expected);         
+     }
+     
+     @Test
+     public void PasswordNotEqual() {
+         MyDialog test = new MyDialog();
+         char[] t = test.getUserPassword();
+         boolean input = test.verifyPassword(t);
+         boolean expected = false; 
+         Assert.assertEquals(input, expected);         
+     }
+     
+     @Test
+     public void PiChartWorking() {
+         PieChartListener test = new PieChartListener();
+         test.actionPerformed(null);
+         PieChart[] input = test.aChart;
+         PieChart[] expected =  { 
+        new PieChart(0, Color.orange)};
+         Assert.assertNotSame(expected, input);
+     }    
+       
 }
