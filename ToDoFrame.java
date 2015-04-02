@@ -24,9 +24,9 @@ public class ToDoFrame extends JFrame implements ActionListener
     private JLabel Title;
     private JButton home;
     private JLabel aLabel;
-    private JLabel Todo1;
-    private JLabel Todo2;
-    private JLabel Todo3;
+    public JLabel Todo1;
+    public JLabel Todo2;
+    public JLabel Todo3;
     private String filename = "todos.txt";
    
     
@@ -142,5 +142,10 @@ public class ToDoFrame extends JFrame implements ActionListener
         {
             e.printStackTrace();
         }
+    }
+    public static String test(){
+        ToDoFrame todo = new ToDoFrame();
+        String h = todo.Todo1.getText();
+        return h;
     }
 }

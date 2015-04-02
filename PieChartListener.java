@@ -33,6 +33,9 @@ public class PieChartListener implements ActionListener {
     }
     
     public void branch(){
+        
+        //to turn a string into a int use: int foo = Integer.parseInt("1234");
+        
         int maint = 20;
         int ins = 13;
         int tax = 12;

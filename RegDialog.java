@@ -12,16 +12,18 @@ public class RegDialog extends JDialog
 	private JDialog regDialog;
 	private JLabel userLabel;
 	private JLabel passLabel;
-	private TextField newUser;
-	private JPasswordField newPass;
+	public TextField newUser;
+	public JPasswordField newPass;
 	private String filename;
 	private JButton compReg;
 	private CompleteButtonListener completeListener;
 	private MyWindowListener aWindowListener;
 	private TextField outcome;
 	
+        
 	public RegDialog()
 	{
+            
 		this.setSize(350,300);
         aWindowListener = new MyWindowListener();
         this.addWindowListener(aWindowListener);
@@ -69,17 +71,28 @@ public class RegDialog extends JDialog
         String username = newUser.getText();
         char[] userPassword = newPass.getPassword();
         
-        if(username == null || username == "")
+        if((username == null) || ("".equals(username)) || (username.length()>12))
         {
-			outcome.setText("Registration failed");
-			validRegistration = false;
+                outcome.setText("Registration failed");
+                validRegistration = false;
+                return validRegistration;
+                        
 		}
+        
         
         if(userPassword.length == 0)
         {
         	outcome.setText("Registration failed");
         	validRegistration = false;
+                return validRegistration;
         }
+        if(userPassword.length > 16)
+        {
+        	outcome.setText("Registration failed");
+        	validRegistration = false;
+                return validRegistration;
+        }
+        
         else
         {
         	for(int a = 0;a<userPassword.length; a++)
@@ -115,8 +128,7 @@ public class RegDialog extends JDialog
         	{
         		System.out.println("the file " + filename + "does not exist in this directory");
         	}
-        }
-        
+        }     
         return validRegistration;
     }
     
