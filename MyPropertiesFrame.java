@@ -20,6 +20,7 @@ public class MyPropertiesFrame extends JFrame implements ActionListener
     private JLabel Title;
     private JButton home;
 
+
     //private JLabel aLabel;
    
     
@@ -86,4 +87,7 @@ public class MyPropertiesFrame extends JFrame implements ActionListener
         aFrame.setVisible(true);
         this.dispose();  
     }
+    
+    
+   
 }

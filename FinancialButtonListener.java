@@ -1,6 +1,7 @@
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JDialog;
 
 
 //used to respond to save button being pressed which writes information to
@@ -8,14 +9,16 @@ import java.awt.event.ActionListener;
 public class FinancialButtonListener implements ActionListener {
     
     //t and t2 used for shortning reasons t = text and t2 = text2
-    private String t;
-    private String t2;
+ 
     public void actionPerformed (ActionEvent e)
     {
-        MyFinancialFrame myProp = new MyFinancialFrame();
-	myProp.setTitle("Financial Overview");
-	myProp.setSize(620,700);
-	myProp.setVisible(true);
+   
+      MyFinancialFrame frame = new MyFinancialFrame();
+      frame.setSize(620, 700);
+      frame.setVisible(true);
+        
+        
+     
 
     }
 }

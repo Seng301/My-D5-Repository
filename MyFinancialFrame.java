@@ -19,7 +19,14 @@ public class MyFinancialFrame extends JFrame  implements ActionListener
 {
     
     private JLabel aLabel;
+    private JLabel infoLabel;
+    private JLabel maintLabel;
+    private JLabel taxLabel;
+    private JLabel utilLabel;
+    private JLabel legalLabel;
+    private JLabel insuranceLabel;
     private JButton home;
+    private JButton Pie;
     private JLabel Title;
     
     //used to set up the frame
@@ -28,6 +35,7 @@ public class MyFinancialFrame extends JFrame  implements ActionListener
         initializeControls();
 	initializeFrame();
         
+        
     }
 
     //adds the parts of the frame
@@ -35,7 +43,14 @@ public class MyFinancialFrame extends JFrame  implements ActionListener
     {
 	
         add(aLabel);
+        add(infoLabel);
+        add(maintLabel);
+        add(taxLabel);
+        add(utilLabel);
+        add(legalLabel);
+        add(insuranceLabel);
         add(home);
+        add(Pie);
         add(Title);
     }
 
@@ -44,9 +59,29 @@ public class MyFinancialFrame extends JFrame  implements ActionListener
     public void initializeFrame()
     {
         ImageIcon LPM = new ImageIcon("LPM.gif");
+        ImageIcon Ledgend =  new ImageIcon("ledgend.gif");
         
         aLabel = new JLabel(LPM);
 	aLabel.setBounds(0,0,75,58);
+        
+        maintLabel = new JLabel("1200");
+	maintLabel.setBounds(475,200,75,58);
+        
+        taxLabel = new JLabel("290");
+	taxLabel.setBounds(475,200,75,58);
+        
+        utilLabel = new JLabel("456");
+	utilLabel.setBounds(475,200,75,58);
+        
+        legalLabel = new JLabel("567");
+	legalLabel.setBounds(475,200,75,58);
+        
+        insuranceLabel = new JLabel("690");
+	insuranceLabel.setBounds(475,200,75,58);
+        
+        
+        infoLabel = new JLabel(Ledgend);
+	infoLabel.setBounds(0,200,450,200);
         
         Title = new JLabel("Financial Overview");
         Title.setBounds(160, 65, 300,40);
@@ -62,9 +97,13 @@ public class MyFinancialFrame extends JFrame  implements ActionListener
     
     public void initializeControls()
     {  
-	home = new JButton("HOME");
-	home.setBounds(260,600,100,50);
-        home.addActionListener(this);
+	Pie = new JButton("HOME");
+	Pie.setBounds(260,600,100,50);
+        Pie.addActionListener(this);
+        
+        home = new JButton("Pie Chart");
+	home.setBounds(260,500,100,50);
+        home.addActionListener(new PieChartListener());
         
     }
     
@@ -76,8 +115,7 @@ public class MyFinancialFrame extends JFrame  implements ActionListener
         aFrame.setVisible(true);
         this.dispose();  
     }
-    
-
+  
 
 
 }
