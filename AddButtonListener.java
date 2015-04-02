@@ -1,6 +1,9 @@
 
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
 import javax.swing.JDialog;
 
 
@@ -9,10 +12,14 @@ import javax.swing.JDialog;
 public class AddButtonListener implements ActionListener {
     
     public void actionPerformed (ActionEvent e)
-    {
-        AddTodoDialog todo = new AddTodoDialog();
-	todo.setTitle("ToDo's");
-	todo.setSize(400,200);
-	todo.setVisible(true);
+    {   
+		JButton aButton = (JButton) e.getSource();
+		ToDoFrame toDoFrame = (ToDoFrame) aButton.getRootPane().getParent();
+		toDoFrame.setVisible(false);
+		toDoFrame.dispose();
+		
+		AddTodoDialog todoDialog = new AddTodoDialog();
+		todoDialog.setSize(400,250);
+		todoDialog.setVisible(true);
     }
 }

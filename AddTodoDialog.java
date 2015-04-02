@@ -10,6 +10,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import java.awt.Component;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -24,7 +27,6 @@ public class AddTodoDialog extends JDialog implements ActionListener
     private final JLabel aLabel;
     private final JButton submit;
     private String filename;
-
 
     public AddTodoDialog()
     {
@@ -69,16 +71,14 @@ public class AddTodoDialog extends JDialog implements ActionListener
                          
                         try
                         {
-                                FileWriter fw = new FileWriter(filename);
-                                PrintWriter pw = new PrintWriter(fw);
-                                pw.println(NewToDo);
-                                fw.close();
-
-                            
+                        	BufferedWriter output = new BufferedWriter(new FileWriter(filename, true));
+                        	NewToDo = NewToDo + "\n";
+                            output.append(NewToDo);
+                            output.close();
                         }
                         catch(IOException o)
                         {
-                                System.out.println("the file " + filename + "does not exist in this directory");
+                        	System.out.println("the file " + filename + "does not exist in this directory");
                         }
                 }
                            
@@ -90,7 +90,10 @@ public class AddTodoDialog extends JDialog implements ActionListener
  
                 } 
             
-            
+            	ToDoFrame todo = new ToDoFrame();
+        		todo.setTitle("ToDo's");
+        		todo.setSize(620,700);
+        		todo.setVisible(true);
                 this.dispose();
             }
     }

@@ -1,14 +1,10 @@
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
@@ -28,6 +24,7 @@ public class MyFinancialFrame extends JFrame  implements ActionListener
     private JButton home;
     private JButton Pie;
     private JLabel Title;
+    int x = 1200;
     
     //used to set up the frame
     public MyFinancialFrame()
@@ -64,20 +61,36 @@ public class MyFinancialFrame extends JFrame  implements ActionListener
         aLabel = new JLabel(LPM);
 	aLabel.setBounds(0,0,75,58);
         
-        maintLabel = new JLabel("1200");
-	maintLabel.setBounds(475,200,75,58);
+        int i = 5306;
+        String maint = "$" + i;
+        maintLabel = new JLabel(maint);
+	maintLabel.setBounds(450,205,150,58);
+        maintLabel.setFont(new Font("Serif", Font.BOLD, 20));
         
-        taxLabel = new JLabel("290");
-	taxLabel.setBounds(475,200,75,58);
         
-        utilLabel = new JLabel("456");
-	utilLabel.setBounds(475,200,75,58);
+        int j = 3406;
+        String tax = "$" + j;
+        taxLabel = new JLabel(tax);
+	taxLabel.setBounds(450,240,150,58);
+        taxLabel.setFont(new Font("Serif", Font.BOLD, 20));
         
-        legalLabel = new JLabel("567");
-	legalLabel.setBounds(475,200,75,58);
+        int k = 1586;
+        String util = "$" + k;
+        utilLabel = new JLabel(util);
+	utilLabel.setBounds(450,273,150,58);
+        utilLabel.setFont(new Font("Serif", Font.BOLD, 20));
         
-        insuranceLabel = new JLabel("690");
-	insuranceLabel.setBounds(475,200,75,58);
+        int l = 9544;
+        String legal = "$" + l;
+        legalLabel = new JLabel(legal);
+	legalLabel.setBounds(450,303,150,58);
+        legalLabel.setFont(new Font("Serif", Font.BOLD, 20));
+        
+        int m = 9544;
+        String ins = "$" + m;
+        insuranceLabel = new JLabel(ins);
+	insuranceLabel.setBounds(450,338,150,58);
+        insuranceLabel.setFont(new Font("Serif", Font.BOLD, 20));
         
         
         infoLabel = new JLabel(Ledgend);
@@ -116,6 +129,10 @@ public class MyFinancialFrame extends JFrame  implements ActionListener
         this.dispose();  
     }
   
+    public void initialize ()
+    {
+        
+    }
 
-
+    
 }

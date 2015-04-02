@@ -1,8 +1,10 @@
 
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -19,7 +21,7 @@ public class MyPropertiesFrame extends JFrame implements ActionListener
     private JLabel aLabel;
     private JLabel Title;
     private JButton home;
-
+    private AddPropListener aListener;
 
     //private JLabel aLabel;
    
@@ -35,7 +37,7 @@ public class MyPropertiesFrame extends JFrame implements ActionListener
     //adds the parts of the frame
     public void addControls()
     {
-	add(New);
+    	add(New);
         add(aLabel);
         add(Title);
         add(home);
@@ -64,18 +66,25 @@ public class MyPropertiesFrame extends JFrame implements ActionListener
 	addControls();
 	setDefaultCloseOperation(MyPropertiesFrame.EXIT_ON_CLOSE);
     }
+    
+    public void openAddProperty()
+    {
+    	AddPropertyDialog pd = new AddPropertyDialog();
+    	pd.setVisible(true);
+    	pd.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+    }
 
     //used to create the controlls on the frame includiong labels texts and 
     //buttons that are used in the program
     public void initializeControls()
     {
- 
-        
-	New = new MyButton("+",null,this);
-	New.setBounds(450,100,50,50);
+    	New = new MyButton("+",null,this);
+		New.setBounds(450,100,50,50);
+        aListener = new AddPropListener();
+        New.addActionListener(aListener);
         
         home = new JButton("HOME");
-	home.setBounds(260,600,100,50);
+        home.setBounds(260,600,100,50);
         home.addActionListener(this);
        
     }
@@ -87,7 +96,4 @@ public class MyPropertiesFrame extends JFrame implements ActionListener
         aFrame.setVisible(true);
         this.dispose();  
     }
-    
-    
-   
 }
