@@ -1,9 +1,6 @@
-package standalone;
-
-/**
- *
- * @author Brendan
- */
+//LPM Landlord Property Management Gui
+//Seng 301
+//Brendan Dueck and David Lian
 
 import javax.swing.JDialog;
 import java.awt.event.ActionListener;
@@ -30,18 +27,27 @@ public class AddTodoDialog extends JDialog implements ActionListener
 
     public AddTodoDialog()
     {
-        
+        //set the name for the text file for the todos
         filename = "todos.txt";
+        
+        //set the header for the todo dialog and it's bounds
         aLabel = new JLabel("Enter New To-Do:");
         aLabel.setBounds(150,10,100,20);
+        
+        //create new submission button,set its bounds and add a listener
         submit = new JButton();
         submit.setBounds(150,100,100,35);
         submit.setText("Submit");
         submit.addActionListener(this);
+        
+        //create a instance of the textfield the users todo will be entered in
         ToDo = new JTextField();
         ToDo.setBounds(50,50,300,25);
         ToDo.addActionListener(this);
+        //no layout so it is null
         setLayout(null);
+        
+        //add all the widgets to the frame
         addControls();
         setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
                
@@ -56,23 +62,28 @@ public class AddTodoDialog extends JDialog implements ActionListener
         
     }
 
-    //used to wait till enter or button has been presesed and then 
-    //compare passwords
+    /* The submit button listener is located here and will write the to do to the todo text file
+     * This method will also close the current dialog and re open the to do's screen
+     */
     public void actionPerformed(ActionEvent e)
     {
-        
+        	
             Component aComponent = (Component) ToDo;
             if (aComponent instanceof JTextField)
             {
                 ToDo = (JTextField) aComponent;
                 String NewToDo = new String(ToDo.getText());
-                 if(NewToDo != null || NewToDo != "")
+                
+                //check if the todo is null or empty
+                 if(NewToDo != null || NewToDo != " ")
                 {
                          
                         try
                         {
                         	BufferedWriter output = new BufferedWriter(new FileWriter(filename, true));
-                        	NewToDo = NewToDo + "\n";
+                        	
+                        	//append a new line at the end so that the next to do will be on the next line
+                        	NewToDo = NewToDo + "\n"; 
                             output.append(NewToDo);
                             output.close();
                         }
@@ -89,11 +100,13 @@ public class AddTodoDialog extends JDialog implements ActionListener
                     //igneore();
  
                 } 
-            
+            	
+            	//create a new instance of ToDoFrame to reflect changes
             	ToDoFrame todo = new ToDoFrame();
         		todo.setTitle("ToDo's");
         		todo.setSize(620,700);
         		todo.setVisible(true);
+        		//dipose of current dialog
                 this.dispose();
             }
     }

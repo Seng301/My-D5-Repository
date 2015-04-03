@@ -1,6 +1,9 @@
-//used as a reference http://www.tutorialspoint.com/javaexamples/gui_piechart.htm
-package standalone;
+//LPM Landlord Property Management Gui
+//Seng 301
+//Brendan Dueck and David Lian
 
+
+//used as a reference http://www.tutorialspoint.com/javaexamples/gui_piechart.htm
 import java.awt.Color;
 
 

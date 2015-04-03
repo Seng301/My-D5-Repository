@@ -1,23 +1,20 @@
-package standalone;
+//LPM Landlord Property Management Gui
+//Seng 301
+//Brendan Dueck and David Lian
 
+//imports for the class
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
-//used to respond to save button being pressed which writes information to
-//a file in the same directory
+//used toopen up a different frame
 public class PropertiesButtonListener implements ActionListener {
-    
-    //t and t2 used for shortning reasons t = text and t2 = text2
-    private String t;
-    private String t2;
+   
     public void actionPerformed (ActionEvent e)
-    {
-        
+    {    
         MyPropertiesFrame myProp = new MyPropertiesFrame();
 	myProp.setTitle("My Properties");
 	myProp.setSize(620,700);
 	myProp.setVisible(true);
-
     }
 }

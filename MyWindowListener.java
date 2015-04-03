@@ -1,10 +1,14 @@
-package standalone;
+//LPM Landlord Property Management Gui
+//Seng 301
+//Brendan Dueck and David Lian
 
+
+//tehse are the imports that are required
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import javax.swing.*;
 import java.awt.Component;
 
+//this checks if the window is closed and then shuts the program down
 public class MyWindowListener extends WindowAdapter
 {
     public void windowClosing (WindowEvent a)
@@ -17,6 +21,7 @@ public class MyWindowListener extends WindowAdapter
             aFrame.setTitle("Terminating program...");
             try
             {
+                //wait a little
                 Thread.sleep(2000);
             }
             catch(InterruptedException e)
@@ -34,10 +39,12 @@ public class MyWindowListener extends WindowAdapter
             aDialog.setTitle("Terminating program");
             try
             {
+                //wait a little
                 Thread.sleep(2000);
             }
             catch(InterruptedException e)
             {
+                //error statement
                 System.out.println("Closing of the program has been interrupted");
             }
             aDialog.setVisible(false);
@@ -54,6 +61,7 @@ public class MyWindowListener extends WindowAdapter
             }
             catch(InterruptedException e)
             {
+                //erreo statement
                 System.out.println("Closing of the program has been interrupted");
             }
             aRegDialog.setVisible(false);

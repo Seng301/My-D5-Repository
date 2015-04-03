@@ -1,4 +1,6 @@
-package standalone;
+//LPM Landlord Property Management Gui
+//Seng 301
+//Brendan Dueck and David Lian
 
 import java.awt.Color;
 import java.awt.Font;
@@ -30,10 +32,6 @@ public class MyPropertiesFrame extends JFrame implements ActionListener
     private String filename = "userinfo.txt";
     private JLabel Prop1;
     private JLabel Descrip1;
-
-    //private JLabel aLabel;
-   
-    
     
     //used to set up the frame
     public MyPropertiesFrame()
@@ -59,7 +57,7 @@ public class MyPropertiesFrame extends JFrame implements ActionListener
     {
         ImageIcon LPM = new ImageIcon("LPM.gif");
         
-        
+        //instantiate the logo 
         aLabel = new JLabel(LPM);
         aLabel.setBounds(0,0,75,58);
         
@@ -68,21 +66,28 @@ public class MyPropertiesFrame extends JFrame implements ActionListener
         Title.setBounds(200, 65, 200,40);
         Title.setFont(new Font("Serif", Font.BOLD, 30));
         
+        //instantiate the label for where the property address will appear if a property is stored
         Prop1 = new JLabel("here");
         Prop1.setBounds(200,150, 100, 35);
         Prop1.setVisible(true);
         
+        //instantiate the label for where the property description will be if one is stored
         Descrip1 = new JLabel("here");
         Descrip1.setBounds(150,150,400,100);
         Descrip1.setVisible(true);
         
+        //read the contents from the properties text file
         displayProperties();
         
        //set the size attributes, controls, and components.     
         setSize(WIDTH,HEIGHT);
         setTitle("My Properties");
         getContentPane().setBackground(Color.white);
+        
+        //no layout so set it to null
         setLayout(null);
+        
+        //add the widgets to the screen
         addControls();
         setDefaultCloseOperation(MyPropertiesFrame.EXIT_ON_CLOSE);
     }
@@ -120,28 +125,37 @@ public class MyPropertiesFrame extends JFrame implements ActionListener
         this.dispose();  
     }
     
+    //read information stored on the users properties
     public void displayProperties()
     {
-    	String todo = "";
     	try
         {
+    		//instantiate a file reader to read from the file
             FileReader fr = new FileReader(filename);
             BufferedReader br = new BufferedReader(fr);
             
+            //read the first line from the text file, this is the address
             String control = br.readLine();
             String descr = "";
+            
+            //make the string address the first line of the text file
             String address = control;
+            
+            //read the next line
             control = br.readLine();
             
+            //while control is not null keep reading, description can be longer than one line
             while(control != null)
             {
             	descr = descr + control;
             	control = br.readLine();
             }
             
+            //set the text fields of the address and description fields
             Prop1.setText(address);
             Descrip1.setText(descr);
-
+            
+            //close readers
             fr.close();
             br.close();
         }

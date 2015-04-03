@@ -1,30 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+//LPM Landlord Property Management Gui
+//Seng 301
+//Brendan Dueck and David Lian
 
-/**
- *
- * @author Brendan
- */
-package standalone;
-
+//thise are the imports
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-
 import javax.swing.JDialog;
 
 
-//used to respond to save button being pressed which writes information to
-//a file in the same directory
+//used to initialize the pie chart
 public class PieChartListener implements ActionListener {
-    
-    //t and t2 used for shortning reasons t = text and t2 = text2
 		PieChart[] aChart = { 
         new PieChart(5, Color.black), 
         new PieChart(33, Color.green),
@@ -32,11 +21,13 @@ public class PieChartListener implements ActionListener {
         new PieChart(15, Color.red) };
 		
     
+    //branch to a non static method to add # to pie
     public void actionPerformed (ActionEvent e)
     {
       branch();
     }
     
+    //used to pass in the #'s
     public void branch(){
     	String filename = "finances.txt";
         int maint = 0;
@@ -46,6 +37,7 @@ public class PieChartListener implements ActionListener {
         int legal = 0;
         String strToInt;
         
+        //read the text file and convirt to a int to be added in pie
     	try
         {
             FileReader fr = new FileReader(filename);
@@ -69,11 +61,13 @@ public class PieChartListener implements ActionListener {
             fr.close();
             br.close();
         }
+        //exception
         catch (IOException e)
         {
             e.printStackTrace();
         }
     	
+        //pass in the values to the coresponding slice
         PieChart[] aChart = { 
         new PieChart(maint, Color.GRAY), 
         new PieChart(ins, Color.blue),
@@ -81,6 +75,7 @@ public class PieChartListener implements ActionListener {
         new PieChart(util, Color.yellow),
         new PieChart(legal, Color.red)};
     	
+        //create the pie chart dialog
     	JDialog Piechart = new JDialog();
     	Piechart.getContentPane().add(new FinancialValue(aChart));
     	Piechart.setSize(300, 200);

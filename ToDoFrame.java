@@ -1,18 +1,17 @@
-package standalone;
+//LPM Landlord Property Management Gui
+//Seng 301
+//Brendan Dueck and David Lian
 
+//This is the imports needed to build the class
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.awt.TextField;
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
@@ -23,27 +22,31 @@ import javax.swing.JButton;
 //that are required for the program
 public class ToDoFrame extends JFrame implements ActionListener
 {
+    //initialize the variables
     public static final int WIDTH = 400;
     public static final int HEIGHT = 800;
     private MyButton New;
     private JLabel Title;
     private JButton home;
     private JLabel aLabel;
-    private JLabel Todo1;
-    private JLabel Todo2;
-    private JLabel Todo3;
+    public JLabel Todo1;
+    public JLabel Todo2;
+    public JLabel Todo3;
     private JButton delete1;
     private JButton delete2;
     private JButton delete3;
     private String filename = "todos.txt";
     private ActionListener aListener;
     
+    
+    //used to initialize the frame
     public ToDoFrame()
     {
 	initializeControls();
 	initializeFrame();
     }
 
+    
     //adds the parts of the frame
     public void addControls()
     {
@@ -69,39 +72,48 @@ public class ToDoFrame extends JFrame implements ActionListener
     	
     	ImageIcon LPM = new ImageIcon("LPM.gif");
         
+        //add the logo
         aLabel = new JLabel(LPM);
         aLabel.setBounds(0,0,75,58);
 	
+        //add the todo label
         Todo1 = new JLabel();
         Todo1.setBounds(200,200,200,25);
 	
+        //add the delete button
         delete1 = new JButton();
         delete1.setBounds(150,200,25,25);
         delete1.addActionListener(aListener);
         delete1.setVisible(false);
         
+        //add the todo2 label
         Todo2 = new JLabel();
         Todo2.setBounds(200,250,200,25);
 	
+        //delete button
         delete2 = new JButton();
         delete2.setBounds(150,250,25,25);
         delete2.addActionListener(aListener);
         delete2.setVisible(false);
 	
+        //3rd todo
         Todo3 = new JLabel();
         Todo3.setBounds(200,300,200,25);
 	
+        //delete the third todo
         delete3 = new JButton();
         delete3.setBounds(150,300,25,25);
-	    delete3.addActionListener(aListener);
+	delete3.addActionListener(aListener);
         delete3.setVisible(false);
 	
         readToDos();
         
+        //add the title
         Title = new JLabel("ToDo's");
         Title.setBounds(200, 100, 200,40);
         Title.setFont(new Font("Serif", Font.BOLD, 30));
         
+        //initialize the frame to default
 	setSize(WIDTH,HEIGHT);
         setTitle("ToDo's");
         getContentPane().setBackground(Color.white);
@@ -112,20 +124,23 @@ public class ToDoFrame extends JFrame implements ActionListener
 	aLabel.setVisible(true);
     }
 
+    
     //used to create the controls on the frame including labels texts and 
     //buttons that are used in the program
     public void initializeControls()
     {
- 
+        //add new button
         New = new MyButton("+",null,this);
         New.setBounds(450,100,50,50);
         New.addActionListener(new AddButtonListener());
-                
+          
+        //add the home button
         home = new JButton("HOME");
         home.setBounds(260,600,100,50);
         home.addActionListener(this);
     }
     
+    //used when the button is hit to close the frame
     public void actionPerformed (ActionEvent e)
     {
         MainFrame aFrame = new MainFrame ();
@@ -134,17 +149,17 @@ public class ToDoFrame extends JFrame implements ActionListener
         this.dispose();  
     }
     
-    public void readToDos()
-
     
+    //this is to read and display the todos
+    public void readToDos()
     {	
     	String todo = "";
     	try
         {
             FileReader fr = new FileReader(filename);
             BufferedReader br = new BufferedReader(fr);
-            
-            todo = br.readLine();
+                //set the todos strings
+                todo = br.readLine();
         	Todo1.setText(todo);
         	Todo1.setVisible(true);
         	
@@ -161,21 +176,22 @@ public class ToDoFrame extends JFrame implements ActionListener
             fr.close();
             br.close();
         }
+        //exception
         catch (IOException e)
         {
             e.printStackTrace();
         }
-    	
+    	//checl to see if empty then delete
     	if(Todo1.getText() != null || Todo1.getText() == " ")
     	{
     		delete1.setVisible(true);
     	}
-    	
+    	//checl to see if empty then delete
     	if(Todo2.getText() != null || Todo2.getText() == " ")
     	{
     		delete2.setVisible(true);
     	}
-    	
+    	//checl to see if empty then delete
     	if(Todo3.getText() != null || Todo3.getText() == " ")
     	{
     		delete3.setVisible(true);
@@ -183,6 +199,7 @@ public class ToDoFrame extends JFrame implements ActionListener
     	
     }
  
+    //used to remove the todo from file
     public void deleteTodo(int py)
     {
     	String clear = " ";	
@@ -237,11 +254,11 @@ public class ToDoFrame extends JFrame implements ActionListener
             pw.println(total);
             pw.close();
         }
+        //exception
         catch (IOException e)
         {
             e.printStackTrace();
         }
-    } 
-    
+    }   
 }  
 

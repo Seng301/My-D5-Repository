@@ -1,43 +1,35 @@
-package standalone;
+//LPM Landlord Property Management Gui
+//Seng 301
+//Brendan Dueck and David Lian
 
-import java.awt.Color;
+//these are the imports that are required for this class
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import javax.swing.JComponent;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author Brendan
- */
+//this calss is a component to initialize the pie chart pieces
 public class FinancialValue extends JComponent {
-    //public int maint = 23; 
+    
+    //initialize the variables
     public int tax = 2034;
     public int util = 7000;
     public int legal = 1233;
     public int insurance = 665;
     PieChart [] slices;
 
-  
-   
+    //this method is created so that we can pass in the pie chart values
    FinancialValue( PieChart[] aChart) {
        slices = aChart;
    }
    
-    
-
    
-   
-   
+   //This is to paint/draw the acctual pie chart
    public void paint(Graphics g) {
       drawPie((Graphics2D) g, getBounds(), slices);
    }
+   
+   //This is to draw the complete pie on the frame
    void drawPie(Graphics2D g, Rectangle area, PieChart[] slices) {
       double total = 0.0D;
       for (int i = 0; i < slices.length; i++) {

@@ -1,4 +1,7 @@
-package standalone;
+//LPM Landlord Property Management Gui
+//Seng 301
+//Brendan Dueck and David Lian
+
 
 import javax.swing.JDialog;
 import java.awt.event.ActionListener;

@@ -1,11 +1,12 @@
-package standalone;
+//LPM Landlord Property Management Gui
+//Seng 301
+//Brendan Dueck and David Lian
 
 import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JLabel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+//this is the listener for when the reg is complete
 public class CompleteButtonListener implements ActionListener
 {
 	public void actionPerformed (ActionEvent a)

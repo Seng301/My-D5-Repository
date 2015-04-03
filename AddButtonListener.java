@@ -1,13 +1,15 @@
-package standalone;
+//LPM Landlord Property Management Gui
+//Seng 301
+//Brendan Dueck and David Lian
 
+//These are the imports that this class requires
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
-import javax.swing.JDialog;
 
 
-//used to respond to save button being pressed which writes information to
+
+//used to respond to add button being pressed which writes information to
 //a file in the same directory
 public class AddButtonListener implements ActionListener {
     
