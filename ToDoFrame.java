@@ -1,11 +1,16 @@
+package standalone;
 
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.awt.TextField;
 
 import javax.swing.JFrame;
@@ -24,14 +29,15 @@ public class ToDoFrame extends JFrame implements ActionListener
     private JLabel Title;
     private JButton home;
     private JLabel aLabel;
-    public JLabel Todo1;
-    public JLabel Todo2;
-    public JLabel Todo3;
+    private JLabel Todo1;
+    private JLabel Todo2;
+    private JLabel Todo3;
+    private JButton delete1;
+    private JButton delete2;
+    private JButton delete3;
     private String filename = "todos.txt";
-   
+    private ActionListener aListener;
     
-    
-    //used to set up the frame
     public ToDoFrame()
     {
 	initializeControls();
@@ -41,10 +47,17 @@ public class ToDoFrame extends JFrame implements ActionListener
     //adds the parts of the frame
     public void addControls()
     {
-	add(New);
-	add(Title);
+    	add(New);
+    	add(Title);
         add(home);
         add(aLabel);
+    	add(aLabel);
+    	add(Todo1);
+    	add(Todo2);
+    	add(Todo3);
+    	add(delete1);
+    	add(delete2);
+    	add(delete3);
     }
 
    
@@ -52,23 +65,38 @@ public class ToDoFrame extends JFrame implements ActionListener
     //used to initialize the frame and create the basics of it
     public void initializeFrame()
     {
-        
-        ImageIcon LPM = new ImageIcon("LPM.gif");
+        aListener = new DeleteListener();
+    	
+    	ImageIcon LPM = new ImageIcon("LPM.gif");
         
         aLabel = new JLabel(LPM);
-	aLabel.setBounds(0,0,75,58);
+        aLabel.setBounds(0,0,75,58);
 	
-	Todo1 = new JLabel();
-	Todo1.setBounds(200,200,200,25);
+        Todo1 = new JLabel();
+        Todo1.setBounds(200,200,200,25);
 	
-	Todo2 = new JLabel();
-	Todo2.setBounds(200,250,200,25);
+        delete1 = new JButton();
+        delete1.setBounds(150,200,25,25);
+        delete1.addActionListener(aListener);
+        delete1.setVisible(false);
+        
+        Todo2 = new JLabel();
+        Todo2.setBounds(200,250,200,25);
 	
-	Todo3 = new JLabel();
-	Todo3.setBounds(200,300,200,25);
+        delete2 = new JButton();
+        delete2.setBounds(150,250,25,25);
+        delete2.addActionListener(aListener);
+        delete2.setVisible(false);
 	
+        Todo3 = new JLabel();
+        Todo3.setBounds(200,300,200,25);
 	
-	readToDos();
+        delete3 = new JButton();
+        delete3.setBounds(150,300,25,25);
+	    delete3.addActionListener(aListener);
+        delete3.setVisible(false);
+	
+        readToDos();
         
         Title = new JLabel("ToDo's");
         Title.setBounds(200, 100, 200,40);
@@ -80,10 +108,6 @@ public class ToDoFrame extends JFrame implements ActionListener
 	setLayout(null);
 	addControls();
 	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	add(aLabel);
-	add(Todo1);
-	add(Todo2);
-	add(Todo3);
 	aLabel.setVisible(true);
 	aLabel.setVisible(true);
     }
@@ -94,15 +118,12 @@ public class ToDoFrame extends JFrame implements ActionListener
     {
  
         New = new MyButton("+",null,this);
-	New.setBounds(450,100,50,50);
+        New.setBounds(450,100,50,50);
         New.addActionListener(new AddButtonListener());
                 
         home = new JButton("HOME");
-	home.setBounds(260,600,100,50);
+        home.setBounds(260,600,100,50);
         home.addActionListener(this);
-        
-	
-        ;
     }
     
     public void actionPerformed (ActionEvent e)
@@ -114,6 +135,8 @@ public class ToDoFrame extends JFrame implements ActionListener
     }
     
     public void readToDos()
+
+    
     {	
     	String todo = "";
     	try
@@ -142,10 +165,83 @@ public class ToDoFrame extends JFrame implements ActionListener
         {
             e.printStackTrace();
         }
+    	
+    	if(Todo1.getText() != null || Todo1.getText() == " ")
+    	{
+    		delete1.setVisible(true);
+    	}
+    	
+    	if(Todo2.getText() != null || Todo2.getText() == " ")
+    	{
+    		delete2.setVisible(true);
+    	}
+    	
+    	if(Todo3.getText() != null || Todo3.getText() == " ")
+    	{
+    		delete3.setVisible(true);
+    	}
+    	
     }
-    public static String test(){
-        ToDoFrame todo = new ToDoFrame();
-        String h = todo.Todo1.getText();
-        return h;
-    }
-}
+ 
+    public void deleteTodo(int py)
+    {
+    	String clear = " ";	
+    	String toDelete = "";
+    	boolean result = false;
+    	String[] todos = new String[3];
+    	todos[0] = Todo1.getText();
+    	todos[1] = Todo2.getText();
+    	todos[2] = Todo3.getText();
+    	
+    	if(py == 200)
+    	{
+    		toDelete = Todo1.getText();
+    		Todo1.setText(clear);
+    	}
+    	if(py == 250)
+    	{
+    		toDelete = Todo2.getText();
+    		Todo2.setText(clear);
+    	}
+    	if(py == 300)
+    	{
+    		toDelete = Todo3.getText();
+    		Todo3.setText(clear);
+    	}
+    	
+    	try
+    	{   
+    		FileWriter fw = new FileWriter("todos.txt");
+    		PrintWriter pw = new PrintWriter(fw);
+    		
+            for(int c = 0; c < 3; c++)
+            {
+            	
+            	result = todos[c].equals(toDelete);
+            	if(result == true)
+            	{
+            			todos[c] = "";
+            	}
+            }
+            
+            String total = "";
+            
+            for(int a = 0; a < 3; a++)
+            {
+            	result = todos[a].equals("");
+            	if(result == false)
+            	{
+            		total = total + "\n" + todos[a];
+            	}
+            }
+            pw.println(total);
+            pw.close();
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    } 
+    
+}  
+

@@ -1,3 +1,4 @@
+package standalone;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -21,7 +22,7 @@ public class FinancialValue extends JComponent {
     public int util = 7000;
     public int legal = 1233;
     public int insurance = 665;
-   PieChart [] slices;
+    PieChart [] slices;
 
   
    

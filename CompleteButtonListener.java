@@ -1,3 +1,4 @@
+package standalone;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;

@@ -1,9 +1,14 @@
-
+package standalone;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.TextArea;
+import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -22,6 +27,9 @@ public class MyPropertiesFrame extends JFrame implements ActionListener
     private JLabel Title;
     private JButton home;
     private AddPropListener aListener;
+    private String filename = "userinfo.txt";
+    private JLabel Prop1;
+    private JLabel Descrip1;
 
     //private JLabel aLabel;
    
@@ -41,7 +49,8 @@ public class MyPropertiesFrame extends JFrame implements ActionListener
         add(aLabel);
         add(Title);
         add(home);
-
+        add(Prop1);
+        add(Descrip1);
     }
 
     
@@ -50,23 +59,35 @@ public class MyPropertiesFrame extends JFrame implements ActionListener
     {
         ImageIcon LPM = new ImageIcon("LPM.gif");
         
-        aLabel = new JLabel(LPM);
-	aLabel.setBounds(0,0,75,58);
         
+        aLabel = new JLabel(LPM);
+        aLabel.setBounds(0,0,75,58);
+        
+        //create new title and set bounds
         Title = new JLabel("My Properties");
         Title.setBounds(200, 65, 200,40);
         Title.setFont(new Font("Serif", Font.BOLD, 30));
         
+        Prop1 = new JLabel("here");
+        Prop1.setBounds(200,150, 100, 35);
+        Prop1.setVisible(true);
         
-            
-	setSize(WIDTH,HEIGHT);
+        Descrip1 = new JLabel("here");
+        Descrip1.setBounds(150,150,400,100);
+        Descrip1.setVisible(true);
+        
+        displayProperties();
+        
+       //set the size attributes, controls, and components.     
+        setSize(WIDTH,HEIGHT);
         setTitle("My Properties");
         getContentPane().setBackground(Color.white);
-	setLayout(null);
-	addControls();
-	setDefaultCloseOperation(MyPropertiesFrame.EXIT_ON_CLOSE);
+        setLayout(null);
+        addControls();
+        setDefaultCloseOperation(MyPropertiesFrame.EXIT_ON_CLOSE);
     }
     
+    // create new AddPropertyDialog to add a new property 
     public void openAddProperty()
     {
     	AddPropertyDialog pd = new AddPropertyDialog();
@@ -88,12 +109,45 @@ public class MyPropertiesFrame extends JFrame implements ActionListener
         home.addActionListener(this);
        
     }
-    
+    /*Action listener that causes the home button to make a new home frame, used to go 
+     *back to the main menu
+     */
     public void actionPerformed (ActionEvent e)
     {
         MainFrame aFrame = new MainFrame ();
         aFrame.setSize(620,700);
         aFrame.setVisible(true);
         this.dispose();  
+    }
+    
+    public void displayProperties()
+    {
+    	String todo = "";
+    	try
+        {
+            FileReader fr = new FileReader(filename);
+            BufferedReader br = new BufferedReader(fr);
+            
+            String control = br.readLine();
+            String descr = "";
+            String address = control;
+            control = br.readLine();
+            
+            while(control != null)
+            {
+            	descr = descr + control;
+            	control = br.readLine();
+            }
+            
+            Prop1.setText(address);
+            Descrip1.setText(descr);
+
+            fr.close();
+            br.close();
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
     }
 }

@@ -1,5 +1,8 @@
+package standalone;
 
 import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -69,7 +72,6 @@ public class MyButtonListener implements ActionListener
                     System.out.println("Program interrupted");
                 }
                 aDialog.setVisible(false);
-                
                 System.exit(0);
             }
         }

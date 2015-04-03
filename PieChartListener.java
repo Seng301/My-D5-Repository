@@ -8,7 +8,7 @@
  *
  * @author Brendan
  */
-
+package standalone;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;

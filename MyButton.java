@@ -1,3 +1,5 @@
+package standalone;
+
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import java.awt.Component;

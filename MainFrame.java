@@ -1,4 +1,6 @@
 
+package standalone;
+
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -22,8 +24,6 @@ public class MainFrame extends JFrame implements ActionListener
     //private MyButton Settings;
     private JButton Settings;
     private JLabel aLabel;
-    public static int x = 0;
-
     
     
     //used to set up the frame

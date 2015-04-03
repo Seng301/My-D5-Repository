@@ -1,4 +1,5 @@
 //used as a reference http://www.tutorialspoint.com/javaexamples/gui_piechart.htm
+package standalone;
 
 import java.awt.Color;
 
